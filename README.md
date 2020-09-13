@@ -33,7 +33,7 @@ mvn clean install
 ```
 
 ## Deploy
-You can import connector dist/s3.zip artifact in WaveMaker studio application using file upload option.On after uploading into wavemaker, you can update your profile properties such as AWS key and Secret.
+You can import connector dist/aws-s3-connector.zip artifact in WaveMaker studio application using file upload option.On after uploading into wavemaker, you can update your profile properties such as AWS key and Secret.
 
 
 ## Use S3 connector in WaveMaker
