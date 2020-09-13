@@ -29,7 +29,7 @@
                 <groupId>com.wavemaker.connector.build</groupId>
                 <artifactId>wavemaker-connector-build-maven-plugin</artifactId>
                 <configuration>
-                    <connectorId>s3</connectorId>
+                    <connectorId>aws-s3-connector</connectorId>
                 </configuration>
                 <executions>
                     <execution>

@@ -9,7 +9,7 @@ import java.util.Map;
 import com.wavemaker.runtime.connector.annotation.WMConnector;
 
 
-@WMConnector(name = "s3",
+@WMConnector(name = "aws-s3-connector",
         description = "This connector provides apis to interact with AWS S3 bucket")
 public interface S3Connector {
 
