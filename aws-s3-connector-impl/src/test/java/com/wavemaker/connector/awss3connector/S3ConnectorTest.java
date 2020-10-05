@@ -1,7 +1,9 @@
 package com.wavemaker.connector.awss3connector;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.junit.Assert;
@@ -31,6 +33,15 @@ public class S3ConnectorTest {
     @Test
     public void uploadFileToS3() {
         s3Connector.uploadFileToS3(new File("/tmp/s3flight.png"), null);
+    }
+
+    @Test
+    public void uploadFile() {
+        try (InputStream inputStream = new FileInputStream(new File("/tmp/s3flight.png"))) {
+            s3Connector.uploadFileToS3(inputStream, "s3flight.png", null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

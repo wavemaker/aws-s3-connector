@@ -4,7 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +94,33 @@ public class S3ConnectorImpl extends AbstractS3Connector {
                 objectMetadata.addUserMetadata(entry.getKey().toString(), entry.getValue().toString());
             }
         }
+        request.setMetadata(objectMetadata);
+        getS3Client().putObject(request);
+    }
+
+    /**
+     * Uploads a new file object to the specified Amazon S3 bucket. You Must have WRITE permissions on bucket to add an object to it.
+     *
+     * @param inputStream
+     * @param s3KeyName
+     * @param metadata
+     */
+    @Override
+    public void uploadFileToS3(InputStream inputStream, String s3KeyName, Map<String, String> metadata) {
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        try {
+            String mimeType = URLConnection.guessContentTypeFromStream(inputStream);
+            objectMetadata.setContentType(mimeType);
+        } catch (IOException e) {
+            throw new RuntimeException("failed to find mime type of given file", e);
+        }
+
+        if (metadata != null) {
+            for (Map.Entry entry : metadata.entrySet()) {
+                objectMetadata.addUserMetadata(entry.getKey().toString(), entry.getValue().toString());
+            }
+        }
+        PutObjectRequest request = new PutObjectRequest(getConfiguration().getBucketName(), s3KeyName, inputStream, objectMetadata);
         request.setMetadata(objectMetadata);
         getS3Client().putObject(request);
     }

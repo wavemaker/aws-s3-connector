@@ -2,6 +2,7 @@ package com.wavemaker.connector.awss3connector;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,15 @@ public interface S3Connector {
      * @param metadata
      */
     void uploadFileToS3(File file, Map<String, String> metadata);
+
+    /**
+     * Uploads a new file object to the specified Amazon S3 bucket. You Must have WRITE permissions on bucket to add an object to it.
+     *
+     * @param inputStream
+     * @param s3KeyName
+     * @param metadata
+     */
+    void uploadFileToS3(InputStream inputStream, String s3KeyName, Map<String, String> metadata);
 
     /**
      * Gets the object from Amazon S3 under the specified bucket and key. To get an object from Amazon S3, the caller must have READ permission to access the
