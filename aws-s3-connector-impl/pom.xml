@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.wavemaker.connector</groupId>
         <artifactId>aws-s3-connector</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
     </parent>
 
     <artifactId>aws-s3-connector-impl</artifactId>
