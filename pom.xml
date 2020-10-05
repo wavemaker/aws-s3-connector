@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wavemaker.connector</groupId>
-    <artifactId>s3connector</artifactId>
+    <artifactId>aws-s3-connector</artifactId>
     <version>1.0</version>
 
     <modules>
-        <module>s3connector-api</module>
-        <module>s3connector-impl</module>
-        <module>s3connector-packaging</module>
+        <module>aws-s3-connector-api</module>
+        <module>aws-s3-connector-impl</module>
+        <module>aws-s3-connector-packaging</module>
     </modules>
 
     <packaging>pom</packaging>
-    <name>s3connector</name>
+    <name>aws-s3-connector</name>
 
     <properties>
-        <wavemaker-version>10.5.3.9077</wavemaker-version>
+        <wavemaker-version>10.5.3.9097</wavemaker-version>
         <aws.version>1.11.722</aws.version>
     </properties>
 
@@ -49,8 +49,13 @@
             </dependency>
             <dependency>
                 <groupId>com.wavemaker.connector</groupId>
-                <artifactId>s3connector-api</artifactId>
+                <artifactId>aws-s3-connector-api</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13</version>
             </dependency>
 
             <!-- AWS dependencies -->
@@ -71,12 +76,7 @@
                 <scope>test</scope>
                 <version>1.2.3</version>
             </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.13</version>
-                <scope>test</scope>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -117,6 +117,7 @@
             <url>https://s3.amazonaws.com/maven.wavemaker.com/release</url>
         </repository>
     </repositories>
+
 
     <pluginRepositories>
         <pluginRepository>

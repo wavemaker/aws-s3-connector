@@ -1,0 +1,4 @@
+version: "1.0"
+name: "aws-s3-connector"
+description: "This connector provides apis to interact with AWS S3 bucket"
+springConfigurationClass: "com.wavemaker.connector.awss3connector.S3ConnectorConfiguration"
